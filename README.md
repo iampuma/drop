@@ -5,9 +5,8 @@ Vagrant allows you to set up an on the fly environment.
 
 ***This is not designed for production use***
 
-### Box specifications
+### Box specifications [iampuma/drop](https://atlas.hashicorp.com/iampuma/boxes/drop) with:
 
-* ubuntu/trusty32
 * nginx
 * nodejs
 * php5-fpm
