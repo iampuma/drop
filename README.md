@@ -1,12 +1,13 @@
 # Vagrant Drupal 7
 
-### Description
+### Introduction
 Vagrant allows you to set up an on the fly environment.
 
 ***This is not designed for production use***
 
-### Box content
+### Box specifications
 
+* ubuntu/trusty32
 * nginx
 * nodejs
 * php5-fpm
