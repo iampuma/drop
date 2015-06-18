@@ -28,3 +28,9 @@ Vagrant allows you to set up an on the fly environment.
 2. Download this repository
 3. Run the command "Vagrant up"
 4. Go to localhost:8080
+
+
+### Roadmap
+
+* Add automatic database backup after vagrant destroy
+* Another seperate provisioner for default Drupal setup
