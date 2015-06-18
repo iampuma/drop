@@ -5,6 +5,17 @@ Vagrant allows you to set up an on the fly environment.
 
 ***This is not designed for production use***
 
+### Box content
+
+* nginx
+* nodejs
+* php5-fpm
+* ruby-dev
+* mariadb
+* composer
+* drush
+* bower
+
 ### Requirements
 * Vagrant [http://www.vagrantup.com/downloads.html]
 * VirtualBox 4.3.8 [https://www.virtualbox.org/]
