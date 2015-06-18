@@ -19,7 +19,7 @@ Vagrant allows you to set up an on the fly environment.
 
 ### Requirements
 * Vagrant [http://www.vagrantup.com/downloads.html]
-* VirtualBox 4.3.8 [https://www.virtualbox.org/]
+* VirtualBox [https://www.virtualbox.org/]
 
 ### Installation
 1. Download and Install Vagrant and VirtualBox.
