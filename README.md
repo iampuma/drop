@@ -34,3 +34,4 @@ Vagrant allows you to set up an on the fly environment.
 
 * Add automatic database backup after vagrant destroy
 * Another seperate provisioner for default Drupal setup
+* Add sass and compass
