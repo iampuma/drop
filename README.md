@@ -11,6 +11,7 @@ Vagrant allows you to set up an on the fly environment.
 * git
 * nginx
 * nodejs
+* npm
 * curl
 * php5-fpm php-pear php5-mysql php5-gd
 * ruby-dev
