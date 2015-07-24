@@ -35,7 +35,6 @@ The vagrant box can receive bug and improvement updates. Vagrant will automatica
 The version changelog can be found at https://atlas.hashicorp.com/iampuma/boxes/drop
 
 ### Roadmap
-
+* v0.0.2: ~~Add sass and compass~~
 * Add automatic database backup after vagrant destroy
 * Another seperate provisioner for default Drupal setup
-* Add sass and compass
