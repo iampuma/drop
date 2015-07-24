@@ -8,6 +8,7 @@ Vagrant allows you to set up an on the fly environment.
 ### Box specifications
 
 * [iampuma/drop](https://atlas.hashicorp.com/iampuma/boxes/drop)
+* git
 * nginx
 * nodejs
 * curl
