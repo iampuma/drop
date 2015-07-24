@@ -36,5 +36,5 @@ The version changelog can be found at https://atlas.hashicorp.com/iampuma/boxes/
 
 ### Roadmap
 * v0.0.2: ~~Add sass and compass~~
-* Add automatic database backup after vagrant destroy
-* Another seperate provisioner for default Drupal setup
+* v0.0.2: Add automatic database backup after vagrant destroy
+* v0.0.2: Another seperate provisioner for default Drupal setup
