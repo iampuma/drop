@@ -10,7 +10,8 @@ Vagrant allows you to set up an on the fly environment.
 * [iampuma/drop](https://atlas.hashicorp.com/iampuma/boxes/drop)
 * nginx
 * nodejs
-* php5-fpm
+* curl
+* php5-fpm php-pear php5-mysql php5-gd
 * ruby-dev
 * mariadb
 * composer
