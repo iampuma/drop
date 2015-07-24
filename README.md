@@ -30,7 +30,7 @@ Vagrant allows you to set up an on the fly environment.
 4. Go to localhost:8080
 
 ### Updates
-The vagrant box can receive bug and improvement updates. Vagrant will automatically check if a new version of the base box is available everytime you run the command 'vagrant up'. Execute the command 'vagrant box update --box iampuma/drop' to update the base box.
+The vagrant box can receive bug and improvement updates. Vagrant will automatically check if a new version of the base box is available everytime you run the command 'vagrant up'. Execute the command **vagrant box update --box iampuma/drop** to update the base box.
 
 The version changelog can be found at https://atlas.hashicorp.com/iampuma/boxes/drop
 
