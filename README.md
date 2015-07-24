@@ -16,6 +16,8 @@ Vagrant allows you to set up an on the fly environment.
 * composer
 * drush
 * bower
+* sass
+* compass
 
 ### Requirements
 * Vagrant [http://www.vagrantup.com/downloads.html]
