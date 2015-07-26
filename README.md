@@ -56,7 +56,9 @@ The iampuma/drop box is created with the ubuntu/trusty32 base box and the create
 
 ### FAQ
 * Vagrant is says that the provisioner
+
 Vagrant runs the provisioner on the first 'vagrant up' command. You can however force provisioning by using 'vagrant up --provision'.
 
 * Drupal drush bam-backup is not working with compression
+
 This is currently a known problem in php5.5 on 32bit systems. I will fix this as soon as there is a fix.
