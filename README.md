@@ -55,9 +55,6 @@ The iampuma/drop box is created with the ubuntu/trusty32 base box and the create
 * v0.0.2: Add automatic database backup after vagrant destroy
 
 ### FAQ
-* Vagrant is says that the provisioner
-
-Vagrant runs the provisioner on the first 'vagrant up' command. You can however force provisioning by using 'vagrant up --provision'.
 
 * Drupal drush bam-backup is not working with compression
 
