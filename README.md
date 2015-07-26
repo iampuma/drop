@@ -35,7 +35,7 @@ Vagrant allows you to set up an on the fly environment.
 4. Go to localhost:8080
 
 ## Advanced feature
-Site scripts can be execute by using the custom Vagrant environment variable 'site'. The current site scripts found in the src folder are currently setup scripts for a new Drupal 7 website. You can however create your own. Please use the format CUSTOM-site.sh as script name in the src folder. And you will be able to run **site=custom vagrant up**
+Site scripts can be execute by using the custom Vagrant environment variable 'site'. The current site scripts found in the src folder are currently setup scripts for a new Drupal 7 website. You can however create your own. Please use the format 'CUSTOM-site.sh' as script name in the src folder. And you will be able to run 'site=custom vagrant up'.
 
 * **site=simple vangrant up** or **vagrant up**: Default installation of a plain Drupal 7 website
 * **site=vanilla vagrant up**: Installation of Drupal 7 with most popular contrib modules and themes
