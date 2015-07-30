@@ -21,6 +21,8 @@ projects[cck][subdir] = "contrib"
 
 projects[ckeditor][subdir] = "contrib"
 
+projects[ckeditor_widgets][subdir] = "contrib"
+
 projects[coffee][subdir] = "contrib"
 
 projects[date][subdir] = "contrib"
@@ -44,6 +46,8 @@ projects[field_group][subdir] = "contrib"
 projects[globalredirect][subdir] = "contrib"
 
 projects[honeypot][subdir] = "contrib"
+
+projects[htmlpurifier][subdir] = "contrib"
 
 projects[i18n][subdir] = "contrib"
 
@@ -96,6 +100,7 @@ projects[] = "bootstrap"
 ; Features
 projects[xi_vanilla_feature][download][type] = "git"
 projects[xi_vanilla_feature][download][url] = "https://git@bitbucket.org/nicky_vandevoorde/xi_vanilla_feature.git"
+projects[xi_vanilla_feature][download][branch] = ckeditor_feature
 projects[xi_vanilla_feature][type] = "module"
 projects[xi_vanilla_feature][subdir] = "features"
 
@@ -103,3 +108,14 @@ projects[xi_vanilla_feature][subdir] = "features"
 projects[vanilla][download][type] = "git"
 projects[vanilla][download][url] = "https://git@bitbucket.org/nicky_vandevoorde/vanilla.git"
 projects[vanilla][type] = "profile"
+
+; Libraries
+libraries[htmlpurifier][download][type] = "get"
+libraries[htmlpurifier][download][url] = "http://htmlpurifier.org/releases/htmlpurifier-4.6.0.zip"
+libraries[htmlpurifier][directory_name] = "htmlpurifier"
+libraries[htmlpurifier][type] = "library"
+
+projects[codemirror][download][type] = "get"
+projects[codemirror][download][url] = "http://download.ckeditor.com/codemirror/releases/codemirror_1.13.zip"
+projects[codemirror][download][subtree] = codemirror/
+projects[codemirror][directory_name] = "contrib/ckeditor/plugins/codemirror"
