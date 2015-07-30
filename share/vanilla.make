@@ -100,7 +100,6 @@ projects[] = "bootstrap"
 ; Features
 projects[xi_vanilla_feature][download][type] = "git"
 projects[xi_vanilla_feature][download][url] = "https://git@bitbucket.org/nicky_vandevoorde/xi_vanilla_feature.git"
-projects[xi_vanilla_feature][download][branch] = ckeditor_feature
 projects[xi_vanilla_feature][type] = "module"
 projects[xi_vanilla_feature][subdir] = "features"
 
