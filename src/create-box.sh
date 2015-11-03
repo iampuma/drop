@@ -3,8 +3,8 @@
 sudo apt-get update
 # Install nginx webservice
 sudo apt-get -y install nginx
-# Install git and curl
-sudo apt-get install -y git curl
+# Install git, zip and curl
+sudo apt-get install -y git curl zip
 # install node and npm
 curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
 sudo apt-get install -y nodejs
