@@ -1,10 +1,10 @@
 Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.synced_folder "share", "/usr/share/nginx", :owner => "www-data", :group => "www-data"
+  config.vm.synced_folder "share", "/usr/share/nginx", :owner => "vagrant", :group => "www-data"
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    vb.memory = "512"
+    vb.memory = "1024"
     vb.gui = false
   end
 
