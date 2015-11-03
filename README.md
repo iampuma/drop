@@ -13,6 +13,7 @@ Vagrant allows you to set up an on the fly environment.
 * nodejs
 * npm
 * curl
+* zip
 * php5-fpm php-pear php5-mysql php5-gd
 * ruby-dev
 * mariadb
@@ -52,7 +53,7 @@ The iampuma/drop box is created with the ubuntu/trusty32 base box and the create
 * v0.0.2: ~~Add sass and compass~~
 * v0.0.2: ~~Another seperate provisioner for default Drupal setup~~
 * v0.0.2: ~~Add possibility for custom build boxes~~
-* v0.0.2: Add automatic database backup after vagrant destroy
+* v0.0.4: Add automatic database backup after vagrant destroy
 
 ### FAQ
 
