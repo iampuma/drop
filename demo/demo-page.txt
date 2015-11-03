@@ -1,0 +1,28 @@
+<h2>Head 2 is the first allowed heading</h2>
+
+<h3>We can also have heading 3</h3>
+
+<h4>And even heading 4</h4>
+
+<p>This is a simple page with <strong>bold </strong>elements, but also <em>italic </em>and <u>underlined </u>elements. We even have some <s>strikethrough </s>elements! We can have some</p>
+
+<ol>
+	<li>numbered</li>
+	<li>lists</li>
+</ol>
+
+<ul>
+	<li>but also</li>
+	<li>bullet</li>
+	<li>lists</li>
+</ul>
+
+<p class="rtecenter">Also align text is no problem</p>
+
+<p class="rteright">even right aligning is no problem at all</p>
+
+<p class="rtejustify"><img alt="" src="/sites/default/files/img9_0.jpg" style="width:150px; height:114px; border-width:5px; border-style:solid; margin:5px; float:left" />Long text can better be justified for readability reasons&nbsp;ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae ex eget dolor dapibus ultrices. Donec quis tortor eget arcu mollis malesuada quis sit amet mauris. Mauris ultrices, felis vel molestie consequat, massa sapien viverra dolor, id lacinia felis diam in ipsum. Sed tincidunt interdum erat pulvinar imperdiet. Curabitur maximus, lacus nec ultricies viverra, erat nunc vulputate arcu, consectetur consequat risus dolor suscipit diam. Etiam id erat eget nunc bibendum ullamcorper. Duis gravida arcu sit amet vestibulum tristique. Cras quis dui at leo volutpat porttitor. Vestibulum eget iaculis nisl, ut elementum enim. Nam porttitor metus porttitor enim feugiat, sit amet ullamcorper magna molestie. Sed auctor massa risus, sed scelerisque nunc malesuada in.</p>
+
+<p class="rtejustify">Nulla in ante id nisl bibendum aliquet vel eu libero. In et urna posuere, ultrices neque nec, mollis lacus. Donec blandit sit amet turpis vitae interdum. Sed massa nisl, vehicula eu faucibus et, ultricies a velit. Sed tincidunt vitae lacus vel rutrum. Sed et lacinia lacus, at condimentum libero. Praesent nibh tortor, interdum a mi quis, sagittis semper ligula. Suspendisse fermentum enim quis consequat ultricies.</p>
+
+<p class="rtejustify">&nbsp;</p>
