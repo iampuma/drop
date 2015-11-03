@@ -2,3 +2,4 @@ build/
 .vagrant/
 *.box
 .build
+.DS_Store
