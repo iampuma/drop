@@ -51,6 +51,14 @@ projects[htmlpurifier][subdir] = "contrib"
 
 projects[i18n][subdir] = "contrib"
 
+projects[imce][subdir] = "contrib"
+
+projects[imce_crop][subdir] = "contrib"
+
+projects[imce_filefield][subdir] = "contrib"
+
+projects[imce_mkdir][subdir] = "contrib"
+
 projects[jquery_update][subdir] = "contrib"
 
 projects[l10n_update][subdir] = "contrib"
@@ -66,6 +74,10 @@ projects[menu_block][subdir] = "contrib"
 projects[metatag][subdir] = "contrib"
 
 projects[module_filter][subdir] = "contrib"
+
+projects[multiupload_filefield_widget][subdir] = "contrib"
+
+projects[multiupload_imagefield_widget][subdir] = "contrib"
 
 projects[nodeblock][subdir] = "contrib"
 
@@ -85,11 +97,15 @@ projects[taxonomy_access_fix][subdir] = "contrib"
 
 projects[token][subdir] = "contrib"
 
+projects[transliteration][subdir] = "contrib"
+
 projects[variable][subdir] = "contrib"
 
 projects[views][subdir] = "contrib"
 
 projects[webform][subdir] = "contrib"
+
+projects[wysiwyg_filter][subdir] = "contrib"
 
 projects[xmlsitemap][subdir] = "contrib"
 
@@ -100,6 +116,7 @@ projects[] = "bootstrap"
 ; Features
 projects[xi_vanilla_feature][download][type] = "git"
 projects[xi_vanilla_feature][download][url] = "https://git@bitbucket.org/nicky_vandevoorde/xi_vanilla_feature.git"
+projects[xi_vanilla_feature][download][branch] = page_feature
 projects[xi_vanilla_feature][type] = "module"
 projects[xi_vanilla_feature][subdir] = "features"
 
@@ -109,11 +126,6 @@ projects[vanilla][download][url] = "https://git@bitbucket.org/nicky_vandevoorde/
 projects[vanilla][type] = "profile"
 
 ; Libraries
-libraries[htmlpurifier][download][type] = "get"
-libraries[htmlpurifier][download][url] = "http://htmlpurifier.org/releases/htmlpurifier-4.6.0.zip"
-libraries[htmlpurifier][directory_name] = "htmlpurifier"
-libraries[htmlpurifier][type] = "library"
-
 projects[codemirror][download][type] = "get"
 projects[codemirror][download][url] = "http://download.ckeditor.com/codemirror/releases/codemirror_1.13.zip"
 projects[codemirror][download][subtree] = codemirror/
