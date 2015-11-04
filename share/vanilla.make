@@ -110,8 +110,8 @@ projects[wysiwyg_filter][subdir] = "contrib"
 projects[xmlsitemap][subdir] = "contrib"
 
 ; Themes
-projects[] = "adminimal_theme"
-projects[] = "bootstrap"
+projects[adminimal_theme][type] = "theme"
+projects[bootstrap][type] = "theme"
 
 ; Features
 projects[xi_vanilla_feature][download][type] = "git"
