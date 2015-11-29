@@ -40,7 +40,7 @@ Vagrant.configure(2) do |config|
       config.vm.box = "iampuma/drop"
     end
     # First check if we are restoring a website.
-    if ENV['restore'] != ''
+    if ENV['restore'].to_s != ''
       config.vm.provision :shell, :path => "scripts/_restore.sh", :args => ENV['restore']
     else
       # Run bash script depending on given site variable.
