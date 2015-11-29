@@ -42,7 +42,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 Extends Vagrant with triggers. If installed it will take a database dump of your project on every 'vagrant destroy' and puts it into the 'www/init/backup' folder.
 
 ## Working on an existing Drupal project
-Place your project source code in www/htdocs and place your database file (extension .sql or .sql.gz) inside of the folder www/init/backup. Afterwards type in **restore=mydatabasefile.sql.gz vagrant up**.
+Place your project source code in www/htdocs and place your database file (extension .sql or .sql.gz) inside of the folder www/init/backup. Afterwards type in **restore=mydatabasefile.sql.gz vagrant up**. You can also use **restore=latest vagrant up** to restore the latest database found in the backup folder.
 
 ## Drupal profiles and custom website installs.
 Site scripts can be executed by using the custom Vagrant environment variable 'site'. The current site scripts found in the scripts folder are currently setup scripts for a new Drupal 7 website. You can however create your own. Please use the format 'mycustomsite.sh' as script name in the scripts folder. And you will be able to run **site=mycustomsite vagrant up**.
@@ -60,6 +60,7 @@ The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-
 * ~~Another seperate provisioner for default Drupal setup~~
 * ~~Add possibility for custom build boxes~~
 * ~~Add automatic database backup after vagrant destroy~~
+* ~~Add latest database restore~~
 * Add a Drupal 7 profile
 * Add a Drupal 8 installation
 * Add a Drupal 8 profile
