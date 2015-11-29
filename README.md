@@ -33,6 +33,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 2. Download this repository
 3. Run the command *vagrant up*
 4. Go to localhost:8080
+5. Login with **admin** and password **admin**
 
 * **site=d7 vagrant up** or **vagrant up**: Default installation of a vanilla Drupal 7 website
 * **site=d7profile vagrant up**: An example of a Drupal 7 profile installation with popular contrib modules and themes
