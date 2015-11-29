@@ -3,3 +3,5 @@ build/
 *.box
 .build
 .DS_Store
+*.sql
+*.sql.gz
