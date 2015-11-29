@@ -38,8 +38,8 @@ Vagrant allows you to set up a virtualized development environment. This project
 * **site=d7profile vagrant up**: An example of a Drupal 7 profile installation with popular contrib modules and themes
 
 ## Optional
-* Vagrant triggers [https://github.com/emyl/vagrant-triggers]
-Extends Vagrant with triggers. If installed it will take a database dump of your project and put it into the 'www/init/backup' folder.
+* Vagrant triggers [https://github.com/emyl/vagrant-triggers]. 
+Extends Vagrant with triggers. If installed it will take a database dump of your project on every 'vagrant destroy' and puts it into the 'www/init/backup' folder.
 
 ## Working on an existing Drupal project
 Place your project source code in www/htdocs and place your database file (extension .sql or .sql.gz) inside of the folder www/init/backup. Afterwards type in **restore=mydatabasefile.sql.gz vagrant up**.
