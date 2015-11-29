@@ -59,8 +59,10 @@ The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-
 * ~~Add sass and compass~~
 * ~~Another seperate provisioner for default Drupal setup~~
 * ~~Add possibility for custom build boxes~~
-* Add a Drupal 8 installation script
-* Add automatic database backup after vagrant destroy
+* ~~Add automatic database backup after vagrant destroy~~
+* Add a Drupal 7 profile
+* Add a Drupal 8 installation
+* Add a Drupal 8 profile
 
 ### FAQ
 
