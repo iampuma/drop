@@ -36,6 +36,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 5. Login with user *admin* and password *admin*
 
 * **site=d7 vagrant up** or **vagrant up**: Default installation of a vanilla Drupal 7 website
+* **site=d8 vagrant up**: Default installation of a vanilla Drupal 8 website
 
 ## Optional
 * Vagrant triggers [https://github.com/emyl/vagrant-triggers]. 
