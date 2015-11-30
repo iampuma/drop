@@ -38,7 +38,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 * **site=d7 vagrant up** or **vagrant up**: Default installation of a vanilla Drupal 7 website
 
 ## Optional
-* Vagrant triggers [https://github.com/emyl/vagrant-triggers]. 
+* Vagrant triggers [https://github.com/emyl/vagrant-triggers].
 Extends Vagrant with triggers. If installed it will take a database dump of your project on every 'vagrant destroy' and puts it into the 'www/init/backup' folder.
 
 ## Working on an existing Drupal project
@@ -67,9 +67,13 @@ The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-
 
 ### FAQ
 
-* I am not using OSX or Ubuntu
+* What about Windows?
 
 This repository has mainly been tested on OSX, but works with any system that has NFS support. As Drupal contains a lot of files, it would be running slow without NFS. Windows users should install https://github.com/winnfsd/vagrant-winnfsd
+
+* I get this warning on windows *Vagrant is attempting to interface with the UI in a way that requires a TTY.*
+
+Then do the following: http://stackoverflow.com/questions/23633276/vagrant-is-attempting-to-interface-with-the-ui-in-a-way-that-requires-a-tty#answer-32398981
 
 * Drupal drush bam-backup is not working with compression
 

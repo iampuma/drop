@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network :private_network, type: "dhcp"
   config.vm.synced_folder "www", "/usr/share/nginx",
-    mount_options: ['actimeo=1'],
+    mount_options: ['nolock,vers=3,udp'],
     type: "nfs"
   config.nfs.map_uid = Process.uid
   config.nfs.map_gid = Process.gid
@@ -57,7 +57,7 @@ Vagrant.configure(2) do |config|
   if Vagrant.has_plugin?("vagrant-triggers")
     config.trigger.before :destroy do
       # Creates a compressed backup of the database found in the Drupal configuration file.
-      run_remote "drush --root=/usr/share/nginx/htdocs/ sql-conf|grep database|awk '{ print $(NF) }' | 
+      run_remote "drush --root=/usr/share/nginx/htdocs/ sql-conf|grep database|awk '{ print $(NF) }' |
         xargs mysqldump -uroot | gzip > /usr/share/nginx/init/backup/" + Time.now.strftime("%Y%m%d_%H%M") + "-backup-before-destroy.sql.gz"
     end
   end
