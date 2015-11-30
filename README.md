@@ -66,7 +66,7 @@ The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-
 * Add a Drupal 7 profile
 * Add a Drupal 8 profile
 * Add Packer template for box creation
-* Add Gulp and Grunt
+* Add Gulp and Grunt cli
 
 ### FAQ
 
@@ -74,10 +74,10 @@ The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-
 
 This repository has mainly been tested on OSX, but works with any system that has NFS support. As Drupal contains a lot of files, it would be running slow without NFS. Windows users should install https://github.com/winnfsd/vagrant-winnfsd
 
-* I get this warning on windows *Vagrant is attempting to interface with the UI in a way that requires a TTY.*
+* I get this warning on Windows *"Vagrant is attempting to interface with the UI in a way that requires a TTY."*
 
 Then do the following: http://stackoverflow.com/questions/23633276/vagrant-is-attempting-to-interface-with-the-ui-in-a-way-that-requires-a-tty#answer-32398981
 
-* Drupal drush bam-backup is not working with compression
+* Drupal *"drush bam-backup"* is not working with compression
 
 This is currently a known problem in php5.5 on 32bit systems. I will fix this as soon as there is a fix.
