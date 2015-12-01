@@ -37,6 +37,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 
 * **site=d7 vagrant up** or **vagrant up**: Default installation of a vanilla Drupal 7 website
 * **site=d8 vagrant up**: Default installation of a vanilla Drupal 8 website
+* **site=d7profile vagrant up**: An expert profile I use for starting new Drupal 7 websites.
 
 ## Optional
 * Vagrant triggers [https://github.com/emyl/vagrant-triggers].
@@ -63,7 +64,7 @@ The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-
 * ~~Add automatic database backup after vagrant destroy~~
 * ~~Add latest database restore~~
 * ~~Add a Drupal 8 installation~~
-* Add a Drupal 7 profile
+* ~~Add a Drupal 7 profile~~
 * Add a Drupal 8 profile
 * Add Packer template for box creation
 * Add Gulp and Grunt cli
