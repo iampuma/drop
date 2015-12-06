@@ -15,6 +15,8 @@ projects[adminimal_admin_menu][subdir] = "contrib"
 
 projects[backup_migrate][subdir] = "contrib"
 
+projects[bootstrap_fieldgroup][subdir] = "contrib"
+
 projects[ctools][subdir] = "contrib"
 
 projects[cck][subdir] = "contrib"
