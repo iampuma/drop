@@ -79,6 +79,10 @@ This repository has mainly been tested on OSX, but works with any system that ha
 
 Then do the following: http://stackoverflow.com/questions/23633276/vagrant-is-attempting-to-interface-with-the-ui-in-a-way-that-requires-a-tty#answer-32398981
 
+* I am hanging on "Mounting NFS shared folders..."*
+
+On OSX enable `Automatically allow signed software to receive incoming connections`, see https://github.com/wunki/vagrant-freebsd/issues/4#issuecomment-150988384. 
+
 * Drupal *"drush bam-backup"* is not working with compression
 
 This is currently a known problem in php5.5 on 32bit systems. I will fix this as soon as there is a fix.
