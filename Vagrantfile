@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network :private_network, type: "dhcp"
   config.vm.synced_folder "www", "/usr/share/nginx",
-    mount_options: ['nolock,vers=3,udp'],
+    mount_options: ['nolock,vers=3,udp,actimeo=2'],
     type: "nfs"
   config.nfs.map_uid = Process.uid
   config.nfs.map_gid = Process.gid
@@ -44,9 +44,7 @@ Vagrant.configure(2) do |config|
       config.vm.provision :shell, :path => "scripts/_restore.sh", :args => ENV['restore']
     else
       # Run bash script depending on given site variable.
-      if ENV['site'].to_s == ''
-        config.vm.provision :shell, :path => "scripts/d7.sh"
-      else
+      if ENV['site'].to_s != ''
         config.vm.provision :shell, :path => "scripts/#{ENV['site']}.sh"
       end
     end
