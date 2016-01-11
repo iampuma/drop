@@ -35,7 +35,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 4. Go to localhost:8080
 5. Login with user *admin* and password *admin*
 
-* **site=d7 vagrant up** or **vagrant up**: Default installation of a vanilla Drupal 7 website
+* **site=d7 vagrant up**: Default installation of a vanilla Drupal 7 website
 * **site=d8 vagrant up**: Default installation of a vanilla Drupal 8 website
 * **site=d7profile vagrant up**: An expert profile I use for starting new Drupal 7 websites.
 
