@@ -3,8 +3,8 @@
 sudo apt-get update
 # Install nginx webservice
 sudo apt-get -y install nginx
-# Install git, zip and curl
-sudo apt-get install -y git curl zip
+# Install git, zip, curl and postfix
+sudo apt-get install -y git curl zip postfix
 # install node and npm
 curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
 sudo apt-get install -y nodejs
@@ -13,10 +13,9 @@ sudo apt-get install -y php-pear php5-mysql php5-fpm php5-gd
 # Install ruby-dev
 sudo apt-get install -y ruby-dev
 # Install sass and compass cli
-sudo gem install sass
-sudo gem install compass
+sudo gem install sass compass
 # Install bower cli
-sudo npm install -g bower
+sudo npm install -g bower gulp grunt-cli
 # Install MariaDB
 sudo debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password password PASS'
 sudo debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password_again password PASS'

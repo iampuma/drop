@@ -14,12 +14,15 @@ Vagrant allows you to set up a virtualized development environment. This project
 * zip
 * php5-fpm php-pear php5-mysql php5-gd
 * ruby-dev
+* postfix
 * mariadb
 * composer
 * drush
 * bower
 * sass
 * compass
+* gulp
+* grunt
 
 ### Requirements
 * Vagrant [http://www.vagrantup.com/downloads.html]
