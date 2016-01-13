@@ -68,9 +68,9 @@ The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-
 * ~~Add latest database restore~~
 * ~~Add a Drupal 8 installation~~
 * ~~Add a Drupal 7 profile~~
+* ~~Add Gulp and Grunt cli~~
 * Add a Drupal 8 profile
 * Add Packer template for box creation
-* Add Gulp and Grunt cli
 
 ### FAQ
 
