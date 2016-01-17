@@ -1,11 +1,30 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Use rbconfig to determine if we're on a windows host or not.
+require 'rbconfig'
+is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
+
+# Install all required plugins if not present.
+required_plugins = %w(vagrant-triggers vagrant-hostmanager)
+if is_windows
+  required_plugins.insert(vagrant-winnfsd)
+end
+
+required_plugins.each do |plugin|
+  need_restart = false
+  unless Vagrant.has_plugin? plugin
+    system "vagrant plugin install #{plugin}"
+    need_restart = true
+  end
+  exec "vagrant #{ARGV.join(' ')}" if need_restart
+end
+
 Vagrant.configure(2) do |config|
   # Setup network and file configuration.
-  config.vm.hostname = "drop#{rand(01..99)}.local"
+  config.vm.hostname = "drop.local"
   config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network :private_network, type: "dhcp"
+  config.vm.network "private_network", type: "dhcp"
   config.vm.synced_folder "www", "/usr/share/nginx",
     mount_options: ['nolock,vers=3,udp,actimeo=2'],
     type: "nfs"
@@ -16,6 +35,22 @@ Vagrant.configure(2) do |config|
     config.winnfsd.gid = Process.gid
   end
   config.ssh.forward_agent = true
+
+  # Updates the hosts file and fixes an issue on dhcp:
+  # https://github.com/cogitatio/vagrant-hostsupdater/issues/56
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+      if vm.id
+        `VBoxManage guestproperty get #{vm.id} "/VirtualBox/GuestInfo/Net/1/V4/IP"`.split()[1]
+      end
+    end
+
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+    config.hostmanager.ignore_private_ip = false
+    config.hostmanager.include_offline = true
+    config.hostmanager.aliases = [ "www.drop.local" ]
+  end
 
   # Setup options of the virtualbox provider.
   config.vm.provider "virtualbox" do |vb|
@@ -51,13 +86,10 @@ Vagrant.configure(2) do |config|
   end
 
   # Setup a backup script that will run on vagrant destroy.
-  # This will only run vagrant-triggers plugin is installed.
-  if Vagrant.has_plugin?("vagrant-triggers")
-    config.trigger.before :destroy do
-      # Creates a compressed backup of the database found in the Drupal configuration file.
-      run_remote "drush --root=/usr/share/nginx/htdocs/ sql-conf|grep database|awk '{ print $(NF) }' |
-        xargs mysqldump -uroot | gzip > /usr/share/nginx/init/backup/" + Time.now.strftime("%Y%m%d_%H%M") + "-backup-before-destroy.sql.gz"
-    end
+  config.trigger.before :destroy do
+    # Creates a compressed backup of the database found in the Drupal configuration file.
+    run_remote "drush --root=/usr/share/nginx/htdocs/ sql-conf|grep database|awk '{ print $(NF) }' |
+      xargs mysqldump -uroot | gzip > /usr/share/nginx/init/backup/" + Time.now.strftime("%Y%m%d_%H%M") + "-backup-before-destroy.sql.gz"
   end
 
   # Setup a startup script that will always run on vagrant up and reload.

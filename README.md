@@ -1,7 +1,7 @@
 # Vagrant Drupal
 
 ### Introduction
-Vagrant allows you to set up a virtualized development environment. This project will help you setup a ready to develop environment for a new or existing Drupal project. Although created with Drupal in mind, it is not limited to Drupal projects.
+Vagrant allows you to set up a virtualized development environment. This project will help you setup a ready to develop environment for a new or existing Drupal project.
 
 ### Box specifications
 
@@ -35,22 +35,26 @@ Vagrant allows you to set up a virtualized development environment. This project
   * [Installing VirtualBox](https://www.virtualbox.org/manual/ch02.html)
 2. Download this repository
 3. Run the command *vagrant up*
-4. Go to localhost:8080
+4. Go to drop.local
 5. Login with user *admin* and password *admin*
 
 * **site=d7 vagrant up**: Default installation of a vanilla Drupal 7 website
 * **site=d8 vagrant up**: Default installation of a vanilla Drupal 8 website
 * **site=d7profile vagrant up**: An expert profile I use for starting new Drupal 7 websites.
 
-## Optional
+## Features by plugin extensions
 * Vagrant triggers [https://github.com/emyl/vagrant-triggers].
-Extends Vagrant with triggers. If installed it will take a database dump of your project on every 'vagrant destroy' and puts it into the 'www/init/backup' folder.
-
-## Working on an existing Drupal project
-Place your project source code in www/htdocs and place your database file (extension .sql or .sql.gz) inside of the folder www/init/backup. Afterwards type in **restore=mydatabasefile.sql.gz vagrant up**. You can also use **restore=latest vagrant up** to restore the latest database found in the backup folder.
+Every 'vagrant destroy' and puts it into the 'www/init/backup' folder.
+* Vagrant winnfsd [https://github.com/winnfsd/vagrant-winnfsd]
+Enables Windows users to use ssh file mounting
+* Vagrant hostmanager [https://github.com/smdahlen/vagrant-hostmanager]
+Manages the /etc/hosts file on guests within a multi-machine environment
 
 ## Drupal profiles and custom website installs.
 Site scripts can be executed by using the custom Vagrant environment variable 'site'. The current site scripts found in the scripts folder are currently setup scripts for a new Drupal 7 website. You can however create your own. Please use the format 'mycustomsite.sh' as script name in the scripts folder. And you will be able to run **site=mycustomsite vagrant up**.
+
+## Working on an existing Drupal project
+Place your project source code in www/htdocs and place your database file (extension .sql or .sql.gz) inside of the folder www/init/backup. Afterwards type in **restore=mydatabasefile.sql.gz vagrant up**. You can also use **restore=latest vagrant up** to restore the latest database found in the backup folder.
 
 ### Box updates
 The first time you will run this repository it will download the latest available base box. Afterwards it could be that the vagrant box can receive bug and improvement updates. Vagrant will automatically check if a new version of the base box is available everytime you run the command 'vagrant up'. Execute the command **vagrant box update --box iampuma/drop** to update the base box.
@@ -58,7 +62,7 @@ The first time you will run this repository it will download the latest availabl
 The version changelog can be found at https://atlas.hashicorp.com/iampuma/boxes/drop
 
 ### Custom box build
-The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-box bash script found in the scripts folder. Building your own box is possible by using the 'build' Vagrant environment variable. Change the build script if wanted and build your box with the command **build=true vagrant up**. A new file '.build' will be created in the folder, so it knows not to use iampuma/drop, but ubuntu/trusty32 instead. It is advised to add your custom box build to your Vagrant box list.
+The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-box bash script found in the scripts folder. Create your own box by using the 'build' Vagrant environment variable. Firstly change the build script if wanted and build your box with the command **build=true vagrant up**.
 
 ### Roadmap
 * ~~Add sass and compass~~
@@ -74,9 +78,9 @@ The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-
 
 ### FAQ
 
-* What about Windows?
+* Why use the vagrant-winnfsd plugin?
 
-This repository has mainly been tested on OSX, but works with any system that has NFS support. As Drupal contains a lot of files, it would be running slow without NFS. Windows users should install https://github.com/winnfsd/vagrant-winnfsd
+As Drupal contains a lot of files, it would be running slow without NFS. Windows users do not have native NFS support, this plugin covers that.
 
 * I get this warning on Windows *"Vagrant is attempting to interface with the UI in a way that requires a TTY."*
 
