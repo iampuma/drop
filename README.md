@@ -26,18 +26,13 @@ Vagrant allows you to set up a virtualized development environment. This project
 4. Go to drop.local
 5. Login with user *admin* and password *admin*
 
+## Drupal profiles and custom website installs.
+Site scripts can be executed by using the custom Vagrant environment variable 'site'. The current site scripts found in the scripts folder are currently setup scripts for a new Drupal 7 website. You can however create your own. Please use the format 'mycustomsite.sh' as script name in the scripts folder. And you will be able to run **site=mycustomsite vagrant up**.
+
 More available commands:
 * **site=d7 vagrant up**: Default installation of a vanilla Drupal 7 website
 * **site=d8 vagrant up**: Default installation of a vanilla Drupal 8 website
 * **site=d7profile vagrant up**: An example profile used for starting new Drupal 7 websites.
-
-## Features by plugin extensions
-* [Vagrant triggers](https://github.com/emyl/vagrant-triggers) allows taking a backup on every 'vagrant destroy' which you will find in the 'www/init/backup' folder.
-* [Vagrant winnfsd](https://github.com/winnfsd/vagrant-winnfsd) enables Windows users to use NFS file mounting.
-* [Vagrant hostmanager](https://github.com/smdahlen/vagrant-hostmanager) manages the /etc/hosts file on guests within a multi-machine environment.
-
-## Drupal profiles and custom website installs.
-Site scripts can be executed by using the custom Vagrant environment variable 'site'. The current site scripts found in the scripts folder are currently setup scripts for a new Drupal 7 website. You can however create your own. Please use the format 'mycustomsite.sh' as script name in the scripts folder. And you will be able to run **site=mycustomsite vagrant up**.
 
 ## Working on an existing Drupal project
 Place your project source code in www/htdocs and place your database file (extension .sql or .sql.gz) inside of the folder www/init/backup. Afterwards type in **restore=mydatabasefile.sql.gz vagrant up**. You can also use **restore=latest vagrant up** to restore the latest database found in the backup folder.
@@ -49,6 +44,11 @@ The version changelog can be found at https://atlas.hashicorp.com/iampuma/boxes/
 
 ## Custom box build
 The [iampuma/drop](https://atlas.hashicorp.com/iampuma/boxes/drop) box is created from a ubuntu/trusty32 base box with the create-box bash script found in the scripts folder. Create your own box by using the 'build' Vagrant environment variable. Firstly change the build script if wanted and build your box with the command **build=true vagrant up**.
+
+## Features by plugin extensions
+* [Vagrant triggers](https://github.com/emyl/vagrant-triggers) allows taking a backup on every 'vagrant destroy' which you will find in the 'www/init/backup' folder.
+* [Vagrant winnfsd](https://github.com/winnfsd/vagrant-winnfsd) enables Windows users to use NFS file mounting.
+* [Vagrant hostmanager](https://github.com/smdahlen/vagrant-hostmanager) manages the /etc/hosts file on guests within a multi-machine environment.
 
 ## Roadmap
 * ~~Add sass and compass~~
