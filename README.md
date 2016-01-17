@@ -22,7 +22,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 ### Installation steps
 1. Download and Install [Vagrant](https://docs.vagrantup.com/v2/installation/) and [VirtualBox](https://www.virtualbox.org/manual/ch02.html).
 2. Download/clone this repository
-3. Run the command *site=d7 vagrant up*
+3. Run the command: **site=d7 vagrant up**
 4. Go to drop.local
 5. Login with user *admin* and password *admin*
 
