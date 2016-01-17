@@ -1,46 +1,34 @@
 # Vagrant Drupal
 
-### Introduction
 Vagrant allows you to set up a virtualized development environment. This project will help you setup a ready to develop environment for a new or existing Drupal project.
 
 ### Box specifications
 
-* [iampuma/drop](https://atlas.hashicorp.com/iampuma/boxes/drop)
-* git
-* nginx
-* nodejs
-* npm
-* curl
-* zip
-* php5-fpm php-pear php5-mysql php5-gd
-* ruby-dev
-* postfix
-* mariadb
-* composer
-* drush
-* bower
-* sass
-* compass
-* gulp
-* grunt
-
-### Requirements
-* Vagrant [http://www.vagrantup.com/downloads.html]
-* VirtualBox [https://www.virtualbox.org/]
-
+* Nginx
+* Mariadb
+* PHP
+* Postfix
+* Git
+* Curl
+* Node.js
+* Composer
+* Bower
+* Drush
+* Sass
+* Compass
+* Gulp
+* Grunt
 
 ### Installation steps
-1. Download and Install Vagrant and VirtualBox.
-  * [Installing Vagrant](https://docs.vagrantup.com/v2/installation/)
-  * [Installing VirtualBox](https://www.virtualbox.org/manual/ch02.html)
-2. Download this repository
-3. Run the command *vagrant up*
+1. Download and Install [Vagrant](https://docs.vagrantup.com/v2/installation/) and [VirtualBox](https://www.virtualbox.org/manual/ch02.html).
+2. Download/clone this repository
+3. Run the command *site=d7 vagrant up*
 4. Go to drop.local
 5. Login with user *admin* and password *admin*
 
 * **site=d7 vagrant up**: Default installation of a vanilla Drupal 7 website
 * **site=d8 vagrant up**: Default installation of a vanilla Drupal 8 website
-* **site=d7profile vagrant up**: An expert profile I use for starting new Drupal 7 websites.
+* **site=d7profile vagrant up**: An example profile used for starting new Drupal 7 websites.
 
 ## Features by plugin extensions
 * [Vagrant triggers](https://github.com/emyl/vagrant-triggers) allows taking a backup on every 'vagrant destroy' which you will find in the 'www/init/backup' folder.
@@ -59,7 +47,7 @@ The first time you will run this repository it will download the latest availabl
 The version changelog can be found at https://atlas.hashicorp.com/iampuma/boxes/drop
 
 ## Custom box build
-The iampuma/drop box is created from a ubuntu/trusty32 base box with the create-box bash script found in the scripts folder. Create your own box by using the 'build' Vagrant environment variable. Firstly change the build script if wanted and build your box with the command **build=true vagrant up**.
+The [iampuma/drop](https://atlas.hashicorp.com/iampuma/boxes/drop) box is created from a ubuntu/trusty32 base box with the create-box bash script found in the scripts folder. Create your own box by using the 'build' Vagrant environment variable. Firstly change the build script if wanted and build your box with the command **build=true vagrant up**.
 
 ## Roadmap
 * ~~Add sass and compass~~
