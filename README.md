@@ -34,8 +34,10 @@ More available commands:
 * **site=d8 vagrant up**: Default installation of a vanilla Drupal 8 website
 * **site=d7profile vagrant up**: An example profile used for starting new Drupal 7 websites.
 
-## Working on an existing Drupal project
-Place your project source code in www/htdocs and place your database file (extension .sql or .sql.gz) inside of the folder www/init/backup. Afterwards type in **restore=mydatabasefile.sql.gz vagrant up**. You can also use **restore=latest vagrant up** to restore the latest database found in the backup folder.
+## Working on an existing Drupal 7 project
+1. Copy your project source code in www/htdocs
+2. Copy your database file (extension .sql or .sql.gz) inr www/init/backup. 
+3. Type **restore=mydatabasefile.sql.gz vagrant up** or **restore=latest vagrant up**.
 
 ## Box updates
 The first time you will run this repository it will download the latest available base box. Afterwards it could be that the vagrant box can receive bug and improvement updates. Vagrant will automatically check if a new version of the base box is available everytime you run the command 'vagrant up'. Execute the command **vagrant box update --box iampuma/drop** to update the base box.
