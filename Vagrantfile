@@ -8,7 +8,7 @@ is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
 # Install all required plugins if not present.
 required_plugins = %w(vagrant-triggers vagrant-hostmanager)
 if is_windows
-  required_plugins.insert(vagrant-winnfsd)
+  required_plugins.insert(0, "vagrant-winnfsd")
 end
 
 required_plugins.each do |plugin|
@@ -40,8 +40,8 @@ Vagrant.configure(2) do |config|
   # https://github.com/cogitatio/vagrant-hostsupdater/issues/56
   if Vagrant.has_plugin?("vagrant-hostmanager")
     config.hostmanager.ip_resolver = proc do |vm, resolving_vm|
-      if vm.id
-        `VBoxManage guestproperty get #{vm.id} "/VirtualBox/GuestInfo/Net/1/V4/IP"`.split()[1]
+      if hostname = (vm.ssh_info && vm.ssh_info[:host])
+        `vagrant ssh -c "hostname -I"`.split()[1]
       end
     end
 
