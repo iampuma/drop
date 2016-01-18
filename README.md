@@ -26,7 +26,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 4. Go to drop.local
 5. Login with user *admin* and password *admin*
 
-## Drupal profiles and custom website installs.
+### Drupal profiles and custom website installs.
 Site scripts can be executed by using the custom Vagrant environment variable 'site'. The current site scripts found in the scripts folder are currently setup scripts for a new Drupal 7 website. You can however create your own. Please use the format 'mycustomsite.sh' as script name in the scripts folder. And you will be able to run **site=mycustomsite vagrant up**.
 
 More available commands:
@@ -34,10 +34,11 @@ More available commands:
 * **site=d8 vagrant up**: Default installation of a vanilla Drupal 8 website
 * **site=d7profile vagrant up**: An example profile used for starting new Drupal 7 websites.
 
-## Working on an existing Drupal 7 project
-1. Copy your project source code in www/htdocs
-2. Copy your database file (extension .sql or .sql.gz) inr www/init/backup. 
-3. Type **restore=mydatabasefile.sql.gz vagrant up** or **restore=latest vagrant up**.
+### Work on an existing Drupal project
+1. Download/clone this repository
+2. Copy your project source code in www/htdocs
+3. Copy your database file (extension .sql or .sql.gz) in www/init/backup. 
+4. Type **restore=mydatabasefile.sql.gz vagrant up** or **restore=latest vagrant up**.
 
 ## Box updates
 The first time you will run this repository it will download the latest available base box. Afterwards it could be that the vagrant box can receive bug and improvement updates. Vagrant will automatically check if a new version of the base box is available everytime you run the command 'vagrant up'. Execute the command **vagrant box update --box iampuma/drop** to update the base box.
