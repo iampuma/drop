@@ -92,6 +92,11 @@ Vagrant.configure(2) do |config|
       xargs mysqldump -uroot | gzip > /usr/share/nginx/init/backup/" + Time.now.strftime("%Y%m%d_%H%M") + "-backup-before-destroy.sql.gz"
   end
 
+  # Open the website URL on vagrant up.
+  config.trigger.after :up do
+    system("open", "http://drop.local/")
+  end
+
   # Setup a startup script that will always run on vagrant up and reload.
   config.vm.provision :shell, path: "scripts/_start.sh", run: "always", privileged: false
 end
