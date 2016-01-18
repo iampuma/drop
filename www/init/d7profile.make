@@ -47,6 +47,8 @@ projects[field_group][subdir] = "contrib"
 
 projects[globalredirect][subdir] = "contrib"
 
+projects[google_analytics][] = "contrib"
+
 projects[honeypot][subdir] = "contrib"
 
 projects[htmlpurifier][subdir] = "contrib"
