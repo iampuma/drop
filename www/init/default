@@ -10,9 +10,11 @@
 #
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
 ##
+#
 
 server {
     listen 80;
+    server_name "drop.local";
     root /usr/share/nginx/htdocs;
     index index.php;
     location / {
@@ -23,12 +25,84 @@ server {
     location = /50x.html {
         root /usr/share/nginx/htdocs;
     }
-    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9$
     location ~ \.php$ {
-        #fastcgi_pass 127.0.0.1:9000;
         # With php5-fpm:
         fastcgi_pass unix:/var/run/php5-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
+        fastcgi_param PHP_VALUE "auto_prepend_file=/var/www/xhgui/external/header.php";
      }
+}
+
+server {
+    listen 2000;
+    server_name "drop.local";
+    index adminer.php;
+    set $root_path '/usr/share/adminer';
+    root $root_path;
+    try_files $uri $uri/ @rewrite;
+
+    location @rewrite {
+     rewrite ^/(.*)$ /index.php?_url=/$1;
+    }
+
+    location ~ \.php {
+        fastcgi_pass unix:/run/php5-fpm.sock;
+        fastcgi_index /adminer.php;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param PATH_INFO       $fastcgi_path_info;
+        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
+        root $root_path;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+server {
+    listen 2100;
+    server_name "drop.local";
+    root /usr/share/php/xhprof_html;
+    index index.php;
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+    location ~ /\. {
+        access_log off;
+        log_not_found off;
+        deny all;
+    }
+    location ~ \.php$ {
+        try_files $uri =404;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+}
+
+server {
+    listen 2200;
+    server_name "drop.local";
+    root   /var/www/xhgui/webroot/;
+    index  index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php?$uri&$args;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
 }
