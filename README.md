@@ -66,6 +66,9 @@ The [iampuma/drop](https://atlas.hashicorp.com/iampuma/boxes/drop) box is create
 * ~~Add a Drupal 8 installation~~
 * ~~Add a Drupal 7 profile~~
 * ~~Add Gulp and Grunt cli~~
+* ~~Add Xdebug and XHProf~~
+* ~~Add Adminer~~
+* ~~Add Mailcatcher~~
 * Add a Drupal 8 profile
 * Add Packer template for box creation
 
