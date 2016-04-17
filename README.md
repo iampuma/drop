@@ -18,6 +18,10 @@ Vagrant allows you to set up a virtualized development environment. This project
 * Compass
 * Gulp
 * Grunt
+* Adminer
+* Xdebug
+* XHProf
+* Mailcatcher
 
 ### Installation steps
 1. Download and Install [Vagrant](https://docs.vagrantup.com/v2/installation/) and [VirtualBox](https://www.virtualbox.org/manual/ch02.html).
