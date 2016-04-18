@@ -94,11 +94,11 @@ Vagrant.configure(2) do |config|
 
   # Open the website URL on vagrant up.
   config.trigger.after :up do
-    system("open", "http://drop.local:1080/") # Mailcatcher
+    #system("open", "http://drop.local:1080/") # Mailcatcher
     #system("open", "http://drop.local:2000/") # Adminer
     #system("open", "http://drop.local:2100/") # XHProf
     #system("open", "http://drop.local:2200/") # XHGui
-    #system("open", "http://drop.local/")      # Website
+    system("open", "http://drop.local/")      # Website
   end
 
   # Setup a startup script that will always run on vagrant up and reload.
