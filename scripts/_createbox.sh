@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
+sudo apt-get install language-pack-en-base
 sudo apt-get update
 # Install nginx webservice
 sudo apt-get -y install nginx
 # Install git, zip and curl
 sudo apt-get install -y git curl zip
 # install node and npm
-curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get install -y nodejs
-# Install PHP5 and dependencies
-sudo apt-get install -y php-pear php5-mysql php5-fpm php5-gd php5-curl php5-dev php5-xdebug php5-mcrypt
+# Install PHP 5.6 and modules
+sudo LC_ALL=en_US.UTF-8 add-apt-repository -y ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install -y php5.6-cli php5.6-xml php5.6-fpm php5.6-gd php5.6-mcrypt php-pear php5.6-mysql php5.6-sqlite php5.6-common php5.6-curl php5.6-intl php5.6-json php5.6-mysql php-xdebug php5.6-dev
 # Install XHProf
 sudo pecl install -Z xhprof-beta
 sudo mkdir /var/tmp/xhprof && sudo chmod 777 /var/tmp/xhprof
