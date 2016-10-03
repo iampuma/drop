@@ -11,6 +11,7 @@ Vagrant allows you to set up a virtualized development environment. This project
 * Git
 * Curl
 * Node.js
+* NPM
 * Composer
 * Bower
 * Drush
@@ -23,18 +24,34 @@ Vagrant allows you to set up a virtualized development environment. This project
 * XHProf
 * Mailcatcher
 
-### Installation steps
+### Requirements
 1. Download and Install [Vagrant](https://docs.vagrantup.com/v2/installation/) and [VirtualBox](https://www.virtualbox.org/manual/ch02.html).
 2. Download/clone this repository
-3. Run the command: **site=d7 vagrant up**
-4. Go to drop.local
-5. Login with user *admin* and password *admin*
+
+### Work on a new Drupal project
+1. Run the command: **site=d7 vagrant up** or **site=d8 vagrant up**
+2. Go to drop.local and login with user:*admin*, password:*admin*
 
 ### Work on an existing Drupal project
-1. Download/clone this repository
-2. Copy your project source code in www/htdocs
-3. Copy your database file (extension .sql or .sql.gz) in www/init/backup. 
-4. Type **restore=mydatabasefile.sql.gz vagrant up** or **restore=latest vagrant up**.
+1. Copy your project source code in www/htdocs
+2. Copy your database file (*.sql OR *.sql.gz) in to www/init/backup
+3. Type **restore=latest vagrant up** or **restore=mydatabasefile.sql.gz vagrant up**
+
+### OR
+
+Use the included NPM scripts (firstly edit the package.json config variables):
+
+* **npm run create**: Run a new copy of the production environment.
+* **npm start**: Run from existing local files and database.
+* **npm run d7**: Run a new Drupal 7 website.
+* **npm run d8**: Run a new Drupal 8 website.
+* **npm run rsync**: Rsync and overwrite all files from production to the local environment.
+* **npm dump:prod**: Create and rsync a production database dump to the local environment.
+* **npm dump**: Create local database dump (useful before `vagrant destroy`).
+* **npm uli**: Create a one-time-login link for the local environment + paste to clipboard.
+* **npm uli:prod**: Create a one-time-login link for the production environment + paste to clipboard.
+* **npm ssh:prod**: SSH in to the production environment.
+* **rename=local.website.com npm run rename**: Replaces `drop.local` to a custom domain for local development.
 
 ### Drupal profiles and custom website installs.
 Site scripts can be executed by using the custom Vagrant environment variable 'site'. The current site scripts found in the scripts folder are currently setup scripts for a new Drupal 7 website. You can however create your own. Please use the format 'mycustomsite.sh' as script name in the scripts folder. And you will be able to run **site=mycustomsite vagrant up**.
@@ -57,21 +74,6 @@ The [iampuma/drop](https://atlas.hashicorp.com/iampuma/boxes/drop) box is create
 * [Vagrant winnfsd](https://github.com/winnfsd/vagrant-winnfsd) enables Windows users to use NFS file mounting.
 * [Vagrant hostmanager](https://github.com/smdahlen/vagrant-hostmanager) manages the /etc/hosts file on guests within a multi-machine environment.
 
-## Roadmap
-* ~~Add sass and compass~~
-* ~~Another seperate provisioner for default Drupal setup~~
-* ~~Add possibility for custom build boxes~~
-* ~~Add automatic database backup after vagrant destroy~~
-* ~~Add latest database restore~~
-* ~~Add a Drupal 8 installation~~
-* ~~Add a Drupal 7 profile~~
-* ~~Add Gulp and Grunt cli~~
-* ~~Add Xdebug and XHProf~~
-* ~~Add Adminer~~
-* ~~Add Mailcatcher~~
-* Add a Drupal 8 profile
-* Add Packer template for box creation
-
 ## FAQ
 
 * Why use the vagrant-winnfsd plugin?
@@ -84,7 +86,7 @@ Then do the following: http://stackoverflow.com/questions/23633276/vagrant-is-at
 
 * I am hanging on "Mounting NFS shared folders..."*
 
-On OSX enable `Automatically allow signed software to receive incoming connections`, see https://github.com/wunki/vagrant-freebsd/issues/4#issuecomment-150988384. 
+On OSX enable `Automatically allow signed software to receive incoming connections`, see https://github.com/wunki/vagrant-freebsd/issues/4#issuecomment-150988384.
 
 * Drupal *"drush bam-backup"* is not working with compression
 

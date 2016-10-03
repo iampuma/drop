@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+DROP_HTTP_PORT = 8080
+DROP_HTTP_LINK = "drop.local"
+
 # Use rbconfig to determine if we're on a windows host or not.
 require 'rbconfig'
 is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
@@ -22,8 +25,8 @@ end
 
 Vagrant.configure(2) do |config|
   # Setup network and file configuration.
-  config.vm.hostname = "drop.local"
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.hostname = DROP_HTTP_LINK
+  config.vm.network "forwarded_port", guest: 80, host: DROP_HTTP_PORT
   config.vm.network "private_network", type: "dhcp"
   config.vm.synced_folder "www", "/usr/share/nginx",
     mount_options: ['nolock,vers=3,udp,actimeo=2'],
@@ -49,13 +52,13 @@ Vagrant.configure(2) do |config|
     config.hostmanager.manage_host = true
     config.hostmanager.ignore_private_ip = false
     config.hostmanager.include_offline = true
-    config.hostmanager.aliases = [ "www.drop.local" ]
+    config.hostmanager.aliases = [ "www." + DROP_HTTP_LINK ]
   end
 
   # Setup options of the virtualbox provider.
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    vb.memory = "1024"
+    vb.memory = "2048"
   end
 
   # Setup conditions for postinstall shell scripts and new box builds.
@@ -88,17 +91,18 @@ Vagrant.configure(2) do |config|
   # Setup a backup script that will run on vagrant destroy.
   config.trigger.before :destroy do
     # Creates a compressed backup of the database found in the Drupal configuration file.
-    run_remote "drush --root=/usr/share/nginx/htdocs/ sql-conf|grep database|awk '{ print $(NF) }' |
-      xargs mysqldump -uroot | gzip > /usr/share/nginx/init/backup/" + Time.now.strftime("%Y%m%d_%H%M") + "-backup-before-destroy.sql.gz"
+    # Uncomment the next lines if desired by default:
+    puts "ಠ_ಠ Hey there! I see you want to destroy this box. You took a database dump, right? Σ(-᷅_-᷄๑)";
+    #run_remote "drush --root=/usr/share/nginx/htdocs/ sql-conf|grep database|awk '{ print $(NF) }' | xargs mysqldump -uroot | gzip > /usr/share/nginx/init/backup/" + Time.now.strftime("%Y%m%d_%H%M") + "-backup-before-destroy.sql.gz"
   end
 
   # Open the website URL on vagrant up.
   config.trigger.after :up do
-    #system("open", "http://drop.local:1080/") # Mailcatcher
-    #system("open", "http://drop.local:2000/") # Adminer
-    #system("open", "http://drop.local:2100/") # XHProf
-    #system("open", "http://drop.local:2200/") # XHGui
-    system("open", "http://drop.local/")      # Website
+    #system("open", "http://" + DROP_HTTP_LINK + ":1080/") # Mailcatcher
+    #system("open", "http://" + DROP_HTTP_LINK + ":2000/") # Adminer
+    #system("open", "http://" + DROP_HTTP_LINK + ":2100/") # XHProf
+    #system("open", "http://" + DROP_HTTP_LINK + ":2200/") # XHGui
+    system("open", "http://" + DROP_HTTP_LINK)      # Website
   end
 
   # Setup a startup script that will always run on vagrant up and reload.

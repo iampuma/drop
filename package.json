@@ -1,0 +1,46 @@
+  {
+  "name": "drop",
+  "version": "1.0.0",
+  "description": "Vagrant environment for new and existing Drupal projects.",
+  "config": {
+    "ssh_user": "root",
+    "ssh_port": "22",
+    "ssh_ip": "YOUR_SERVER_IP",
+    "ssh_dir": "/var/www/WEBSITE_DIR/",
+    "ssh_exclude": "node_modules",
+    "local_url": "http://drop.local/",
+    "prod_url": "http://WEBSITE.COM/",
+    "restore_db_file": "latest"
+  },
+  "scripts": {
+    "create": "npm run dump:prod; npm run rsync; npm start; npm run uli; vagrant ssh",
+    "start": "restore=$npm_package_config_restore_db_file vagrant up",
+    "d7": "site=d7 vagrant up",
+    "d8": "site=d8 vagrant up",
+    "rsync": "rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:$npm_package_config_ssh_dir www/htdocs --exclude=$npm_package_config_ssh_exclude;",
+    "dump:prod": "npm run dump:prod:db; rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:~/*prod_backup.sql.gz www/init/backup --remove-source-files",
+    "dump:prod:db": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; drush sql-dump --gzip > ~/`date +%Y%m%d_%H%M`_prod_backup.sql.gz;\"",
+    "dump": "vagrant ssh -c \"cd /usr/share/nginx/htdocs && drush sql-dump --gzip > /usr/share/nginx/init/backup/`date +%Y%m%d_%H%M`_local_backup.sql.gz\"",
+    "uli": "vagrant ssh -c \"cd /usr/share/nginx/htdocs && drush uli --uri=$npm_package_config_local_url\" | pbcopy",
+    "ssh:prod": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; bash\"",
+    "uli:prod": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; drush uli --uri=$npm_package_config_prod_url;\" | pbcopy",
+    "rename": "sed -i.bak s/drop.local/$rename/g Vagrantfile; sed -i.bak s/drop.local/$rename/g www/init/default; sed -i.bak s/drop.local/$rename/g package.json; ",
+    "test": "if [ ! -d 'www/htdocs' ]; then echo 'No project in www/htdocs found!'; else [ $(ls www/init/backup) ] && echo 'Ready for restore.' || echo 'No sql file found in www/init/backup!'; fi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iampuma/drop.git"
+  },
+  "keywords": [
+    "drupal",
+    "vagrant",
+    "drop"
+  ],
+  "author": "nicky.vandevoorde@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iampuma/drop/issues"
+  },
+  "homepage": "https://github.com/iampuma/drop#readme",
+  "main": "index.js"
+}
