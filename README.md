@@ -45,12 +45,12 @@ Use the included NPM scripts (firstly edit the package.json config variables):
 * **npm start**: Run from existing local files and database.
 * **npm run d7**: Run a new Drupal 7 website.
 * **npm run d8**: Run a new Drupal 8 website.
-* **npm run rsync**: Rsync and overwrite all files from production to the local environment.
-* **npm dump:prod**: Create and rsync a production database dump to the local environment.
-* **npm dump**: Create local database dump (useful before `vagrant destroy`).
-* **npm uli**: Create a one-time-login link for the local environment + paste to clipboard.
-* **npm uli:prod**: Create a one-time-login link for the production environment + paste to clipboard.
-* **npm ssh:prod**: SSH in to the production environment.
+* **npm run sync**: Overwrites your local state with the production state.
+* **npm run sync:htdocs**: Overwrites your local files with the production files.
+* **npm run sync:db**: Overwrites your local database with the production database.
+* **npm dump:prod**: Dumps a production database in www/init/backup.
+* **npm dump**: Dumps a local database in www/init/backup. (useful before `vagrant destroy`).
+* **npm uli**: Creates a one-time-login link.
 * **rename=local.website.com npm run rename**: Replaces `drop.local` to a custom domain for local development.
 
 ### Drupal profiles and custom website installs.
