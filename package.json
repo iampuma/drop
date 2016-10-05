@@ -13,17 +13,16 @@
     "restore_db_file": "latest"
   },
   "scripts": {
-    "create": "npm run dump:prod; npm run rsync; npm start; npm run uli; vagrant ssh",
+    "create": "npm run dump:prod; npm run sync:htdocs; npm start; npm run uli; vagrant ssh",
     "start": "restore=$npm_package_config_restore_db_file vagrant up",
     "d7": "site=d7 vagrant up",
     "d8": "site=d8 vagrant up",
-    "rsync": "rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:$npm_package_config_ssh_dir www/htdocs --exclude=$npm_package_config_ssh_exclude;",
-    "dump:prod": "npm run dump:prod:db; rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:~/*prod_backup.sql.gz www/init/backup --remove-source-files",
-    "dump:prod:db": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; drush sql-dump --gzip > ~/`date +%Y%m%d_%H%M`_prod_backup.sql.gz;\"",
+    "sync:htdocs": "rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:$npm_package_config_ssh_dir www/htdocs --exclude=$npm_package_config_ssh_exclude;",
+    "sync:db": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; drush sql-dump --gzip > ~/latest.sql.gz;\"; rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:~/latest.sql.gz www/init/backup --remove-source-files; vagrant ssh -c \"cd /usr/share/nginx/htdocs; drush -y sql-drop;gunzip -c /usr/share/nginx/init/backup/latest.sql.gz | drush sql-cli;rm /usr/share/nginx/init/backup/latest.sql.gz\"",
+    "sync": "npm run sync:htdocs; npm run sync:db",
     "dump": "vagrant ssh -c \"cd /usr/share/nginx/htdocs && drush sql-dump --gzip > /usr/share/nginx/init/backup/`date +%Y%m%d_%H%M`_local_backup.sql.gz\"",
-    "uli": "vagrant ssh -c \"cd /usr/share/nginx/htdocs && drush uli --uri=$npm_package_config_local_url\" | pbcopy",
-    "ssh:prod": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; bash\"",
-    "uli:prod": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; drush uli --uri=$npm_package_config_prod_url;\" | pbcopy",
+    "dump:prod": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; drush sql-dump --gzip > ~/`date +%Y%m%d_%H%M`_prod_backup.sql.gz;\"; rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:~/*prod_backup.sql.gz www/init/backup --remove-source-files",
+    "uli": "vagrant ssh -c \"cd /usr/share/nginx/htdocs && drush uli --uri=$npm_package_config_local_url\"",
     "rename": "sed -i.bak s/drop.local/$rename/g Vagrantfile; sed -i.bak s/drop.local/$rename/g www/init/default; sed -i.bak s/drop.local/$rename/g package.json; ",
     "test": "if [ ! -d 'www/htdocs' ]; then echo 'No project in www/htdocs found!'; else [ $(ls www/init/backup) ] && echo 'Ready for restore.' || echo 'No sql file found in www/init/backup!'; fi"
   },
