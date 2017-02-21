@@ -17,6 +17,7 @@
     "start": "restore=$npm_package_config_restore_db_file vagrant up",
     "d7": "site=d7 vagrant up",
     "d8": "site=d8 vagrant up",
+    "sync:info": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; du -hd2 | sort -h\"",
     "sync:htdocs": "rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:$npm_package_config_ssh_dir www/htdocs $npm_package_config_ssh_exclude;",
     "sync:db": "ssh -tp $npm_package_config_ssh_port $npm_package_config_ssh_user@$npm_package_config_ssh_ip \"cd $npm_package_config_ssh_dir; drush sql-dump --gzip > ~/latest.sql.gz;\"; rsync -avze \"ssh -p $npm_package_config_ssh_port\" $npm_package_config_ssh_user@$npm_package_config_ssh_ip:~/latest.sql.gz www/init/backup --remove-source-files; vagrant ssh -c \"cd /usr/share/nginx/htdocs; drush -y sql-drop;gunzip -c /usr/share/nginx/init/backup/latest.sql.gz | drush sql-cli;rm /usr/share/nginx/init/backup/latest.sql.gz\"",
     "sync": "npm run sync:htdocs; npm run sync:db",

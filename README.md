@@ -48,6 +48,7 @@ Use the included NPM scripts (firstly edit the package.json config variables):
 * **npm run sync**: Overwrites your local state with the production state.
 * **npm run sync:htdocs**: Overwrites your local files with the production files.
 * **npm run sync:db**: Overwrites your local database with the production database.
+* **npm run sync:info**: Returns the list of folders that will be synced sorted by size.
 * **npm dump:prod**: Dumps a production database in www/init/backup.
 * **npm dump**: Dumps a local database in www/init/backup. (useful before `vagrant destroy`).
 * **npm uli**: Creates a one-time-login link.
