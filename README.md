@@ -49,9 +49,9 @@ Use the included NPM scripts (firstly edit the package.json config variables):
 * **npm run sync:htdocs**: Overwrites your local files with the production files.
 * **npm run sync:db**: Overwrites your local database with the production database.
 * **npm run sync:info**: Returns the list of folders that will be synced sorted by size.
-* **npm dump:prod**: Dumps a production database in www/init/backup.
-* **npm dump**: Dumps a local database in www/init/backup. (useful before `vagrant destroy`).
-* **npm uli**: Creates a one-time-login link.
+* **npm run dump:prod**: Dumps a production database in www/init/backup.
+* **npm run dump**: Dumps a local database in www/init/backup. (useful before `vagrant destroy`).
+* **npm run uli**: Creates a one-time-login link.
 * **rename=local.website.com npm run rename**: Replaces `drop.local` to a custom domain for local development.
 
 ### Drupal profiles and custom website installs.
